@@ -58,15 +58,15 @@
 
         bool g = true;
 
-// Strings:
-    // strings are consider a unique type. theyre not primitive as they are basically a list of characters
-    // to use strings we need to use the std namespace and a library
-    // check line 7
-    // ex:
-
-    std::string h = "hello world";
-
 // Derived Data Types:
+
+    // Strings:
+        // strings are consider a unique type. theyre not primitive as they are basically a list of characters
+        // to use strings we need to use the std namespace and a library
+        // check line 7
+        // ex:
+
+        std::string h = "hello world";
 
     // arrays:
         // An array is a collection of elements of the same type.
@@ -82,7 +82,7 @@
         // Ex:
 
         int* pointer = &a;  // The pointer 'pointer' stores the memory address of 'a'.
-
+        
 
     // reference:
         // A reference is an alias for another variable. It's another name that refers to the same memory location.

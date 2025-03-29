@@ -1,6 +1,6 @@
 // Lesson 2: Operators
 
-// in cpp we have three types of operators.. logic operators, realation operatirs and arithmatic operators
+// in cpp we have three types of operators.. logic operators, realation operators and arithmatic operators
 // lets define two variables here so we can use while explaining
 
 // one operator you definitly have seen before is the assignment operator. 1 equal sign is used to assign a value to a variable
@@ -26,6 +26,7 @@ int a = 3, b = 4;
 
         // wait why is it zero? shouldnt it be 0.75?
         // yes and no. the reason its not 0.75 is because we are dividing two ints and storing them in an int
+        // NOTE: Even if we set the variable division to be of type float, the answer we will get is 0.0
         // we can defintly type cast it to a float, but theres another way
 
         // lets define c to be a float equal to 3.0
@@ -34,7 +35,7 @@ int a = 3, b = 4;
         float divisionTwo = c / b; // this is the same as 3.0 / 4 which is 0.75
         // slightly confusing, but you will get used to it
 
-        // NOTE: Even if we set the variable division to be of type float, the answer we will get is 0.0
+        
 
     // Modulus:
         // the name might seem intimidating at first, but trust me when i say its not..
@@ -57,7 +58,7 @@ int a = 3, b = 4;
         // the exact opposite of the above.. checks if two values are NOT equal
         // ex:
 
-        bool notEqual = a  != b; // true: 3 and 4 are two different numbers
+        bool notEqual = a != b; // true: 3 and 4 are two different numbers
 
     // Strictly Less than "<"
         // checks if value to the left of this opperand is strictly smaller than the one on the right
@@ -121,7 +122,7 @@ int a = 3, b = 4;
             // so false || true => True
 
         // ex:
-        bool orOperatorExampleTwo = (a < 1) && (b > 100);
+        bool orOperatorExampleTwo = (a < 1) || (b > 100);
             // False: a is not less than 1, and b is not greater than 100
             // so False || False => False
 

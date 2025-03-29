@@ -11,6 +11,7 @@
 // all code that needs to be run will be written here
 // that also include calling code that is outside of this section. 
 // more on that later!
+
 int main() {
 
     // did you notice the int keyword before main? that keyword basically specifies the return type of the function main.
@@ -85,5 +86,11 @@ for now, we dont need to know steps 5 and 6.
 NOTE: if you are lazy like myself, you can combine steps 3 and 4 into 1 command by simply using "&&". checkout the code below:
     ----------------------------------
     g++ main.cpp -o main && ./main
+    ----------------------------------
+    
+    or
+
+    ----------------------------------
+    g++ main.cpp -o main; ./main
     ----------------------------------
 */
