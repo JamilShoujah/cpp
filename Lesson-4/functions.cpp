@@ -66,6 +66,8 @@ using namespace std;
             cout << "Hello, World!" << endl;
         }
 
+        // NOTE: the function declaration is not necessary if the function's definition was before implemented above main.
+
     // return types
     // The return type of a function defines the type of value that the function will return after execution.
     // in other words, The return type of a function tells what kind of value the function will give back after running.
@@ -106,6 +108,8 @@ using namespace std;
         // If it returns a group of values use struct, or class.
         // ex:
 
+        // Note: the function will return an object of type class / struct
+        
         struct Point {
             int x, y;
         };
