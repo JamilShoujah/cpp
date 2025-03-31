@@ -1,4 +1,4 @@
-// Lesson 4: Functions
+// Lesson 4 - Part 1: Functions
 
 #include <iostream>
 #include <string>
