@@ -45,7 +45,7 @@ using namespace std;
     // When to use each?
         // Function declarations are useful when calling a function before defining it or when working with multiple files,
         // whereas function definitions are necessary to execute the function.
-        // in other words, ou use a function declaration when you want to tell the compiler about a function before 
+        // in other words, use a function declaration when you want to tell the compiler about a function before 
         // using it, especially if the function is defined later in the code or in another file. 
         // This helps keep your code organized, allows separation of logic, and avoids errors when calling a 
         // function before its definition.
@@ -66,7 +66,7 @@ using namespace std;
             cout << "Hello, World!" << endl;
         }
 
-        // NOTE: the function declaration is not necessary if the function's definition was before implemented above main.
+        // NOTE: the function declaration is not necessary if the function's definition was implemented above main.
 
     // return types
     // The return type of a function defines the type of value that the function will return after execution.
@@ -158,8 +158,9 @@ using namespace std;
 
             // lets take a look at the example above in more detail
             // The factorial of a number n is:
-                //n!=n×(n−1)×(n−2)×...×1
+                // n!=n×(n−1)×(n−2)×...×1
                 // ex: 5!=5×4×3×2×1=120
+                //     5! = 5 * 4! 
 
             // this is how the function works:
                 // factorial(5) = 5 * factorial(4)
@@ -320,9 +321,8 @@ using namespace std;
         // templates enable generic programming.
         
         // ex:
-
-        template <typename T>
-        T maxVal(T a, T b) {
+        template <typename batee5>
+        batee5 maxVal(batee5 a, batee5 b) {
             return (a > b) ? a : b;
         }
 
@@ -333,9 +333,8 @@ using namespace std;
 
         // You can also create templates that work with more than one type
         // ex:
-
-        template <typename T1, typename T2>
-        void printData(T1 a, T2 b) {
+        template <typename Mawzi, typename bandoura>
+        void printData(Mawzi a, bandoura b) {
             cout << "First: " << a << ", Second: " << b << endl;
         }
 
