@@ -26,7 +26,7 @@ using namespace std;
         // It specifies the return type, function name, and parameters but does not include the function body.
         // It is usually placed before main() or in a header file. More on that later on!
         // ex:
-        int multiply(int, int);
+        int multiply(int a, int b);
 
     // What is function definition?
         // The function definition contains the actual implementation (function body).
