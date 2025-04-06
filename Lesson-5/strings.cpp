@@ -26,6 +26,12 @@ using namespace std;
             // with cin, we cant pass the following: "Jamil Shoujah". We can only pass "Jamil"
             // with getline(), we can pass "Jamil Shoujah".
 
+        void getlineExample(){
+            string ramaisthegoat;
+            getline(cin, ramaisthegoat);
+            cout<<ramaisthegoat;
+        }
+
     // String Functions (cstring Library). check line 3
 
     char str1[] = "Hello";
@@ -34,7 +40,7 @@ using namespace std;
         // strlen(str) → Returns length of string
             //ex:
             void stringLenght(){
-                cout << strlen(str1) << endl; // Output: 10 (length)
+                cout << strlen(str1) << endl; // Output: 5 (length)
             } 
         // strcpy(dest, src) → Copies one string into another
             // literally makes the first param have the same value as the second param
@@ -65,7 +71,7 @@ using namespace std;
         string str1 = "Hello";
         string str2("World");
 
-        //  std::string automatically manages memory, unlike character arrays.
+        // std::string automatically manages memory, unlike character arrays.
         // No need for \0, as C++ handles null termination internally.
     
         // String Operations
@@ -73,7 +79,7 @@ using namespace std;
         string second = "World!";
 
             // concatination:
-            string result = first + second; // "Hello, World!""
+            string result = first + second; // "Hello, World!"
 
             // String Length
             int length = result.length(); // // Output: 13
@@ -85,7 +91,7 @@ using namespace std;
             string sub = result.substr(7, 5); // Start at index 7, length 5 // Output: World
 
             // Finding a Substring
-            size_t pos = result.find("World"); // Finds "World" and returns index
+           int pos = result.find("World"); // Finds "World" and returns index // 7
 
             // Replacing a Substring
             string newResult = result.replace(7, 5, "Universe"); // Replace "World" with "Universe" // // Output: Hello, Universe!
@@ -130,7 +136,3 @@ using namespace std;
             string result = ss.str(); // Convert to string
             cout << result << endl; // Output: Age: 25
         }
-
-
-
-

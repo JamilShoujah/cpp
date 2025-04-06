@@ -32,6 +32,21 @@ using namespace std;
                 // ex:
                 int arr[5] = {}; // arr = {0, 0, 0, 0, 0}
 
+    // Size of Array:
+        // to get the size of a standard c-style array, we use the sizeof() function
+        // this function will return the number of bytes the array take
+        // ex:
+        int size = sizeof(arr); // will return 20
+        // reason being: int are 4 byte, and number of elements in array are 5
+        // so 5 * 4 = 20
+
+        // to get the exact number of elements in the array, we have to divide it by the sizeof() the first element
+        // ex:
+
+        int sizeTwo = sizeof(arr) / sizeof(arr[0]); // 5
+        // in other words, its like dividing the size of the array in memeory, by the size of the types of data in the array
+        // in this case its int (4 bytes)
+
     // Accessing Array Elements
         // Array elements are accessed using their index. The index starts at 0, so the first element is at index 0, 
         // the second at index 1, and so on.
@@ -45,7 +60,7 @@ using namespace std;
             cout << arr[3]; // Prints 4
             // ------------------------------
         }
-            
+
 
     // Modifying Array Elements
         // You can modify the value of any element in the array using its index
@@ -107,6 +122,7 @@ using namespace std;
                     cout << arr[i] << " ";
                     i++;
                 }
+
                 // ------------------------------
                 // the output will be: 1 2 3 4 5
             }
@@ -142,6 +158,26 @@ using namespace std;
         // Accessing Elements in a 2D Array
         // ex:
 
+
+        // arr pizza = [] [] [] [] []
+
+        // arr pizza = 
+        // [],
+        // [],
+        // [],
+        // [],
+        // []
+
+        // arr pizza = [[],[],[],[],[]] [[],[],[],[],[]] [[],[],[],[],[]] [[],[],[],[],[]] [[],[],[],[],[]]
+        
+        // arr pizza = 
+        // [[],[],[],[],[]],
+        // [[],[],[],[],[]],
+        // [[],[],[],[],[]],
+        // [[],[],[],[],[]],
+        // [[],[],[],[],[]]
+
+
         void printElementInMatrix() {
             // focus on this section
             // ------------------------------
@@ -152,9 +188,16 @@ using namespace std;
         // iterating over a 2D array
         // ex:
 
+
         void iteratingOver2DArray() {
             // focus on this section
             // ------------------------------
+
+            int matrix[3][3] = {
+                {1, 2, 3}, 
+                {4, 5, 6}, 
+                {7, 8, 9}
+            };
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                     cout << matrix[i][j] << " ";
@@ -168,6 +211,31 @@ using namespace std;
                 // 7 8 9  
 
         }
+
+// std::arrays
+    // are basically the same as the arrays up top but upgraded
+    // to use just include the library:
+    #include <array>
+
+    // examlpe of initializing this array
+    array<int, 5> arr = {1, 2, 3, 4, 5};
+
+    // this array is upgraded because it has more functions we can appy to it
+    // ex:
+
+    void stdArraysFunctions(){
+
+        array<int, 5> arr = {1, 2, 3, 4, 5};
+        cout << arr.size() << endl;     // Number of elements // no need to divide by size of datatype
+        cout << arr.front() << endl;    // First element
+        cout << arr.back() << endl;     // Last element
+        cout << arr.empty() << endl;    // Check if empty
+        cout << arr.at(3) << endl;      // Bounds-checked access
+        cout << arr[3] << endl;         // Normal access
+        arr.fill(0);                    // Fill all with 0
+    }
+
+    // Also compatible with <algorithm> functions like std::sort, std::find, etc.
 
 // Vectors (Dynamic Arrays)
     // NOTE: Vectors are not linked lists.. keep that in mind
@@ -305,7 +373,7 @@ using namespace std;
 // vectors vs arrays
     // Size	
         // Vector: Dynamic (grows/shrinks)	
-        // arrays:Fixed at compile-time
+        // arrays: Fixed at compile-time
     // Memory Management
         // Vector: Automatic	
         // arrays: Manual
