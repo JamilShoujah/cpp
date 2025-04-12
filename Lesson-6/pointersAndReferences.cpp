@@ -7,7 +7,7 @@ using namespace std;
 
     // Declaring and Using Pointers
     int a = 10;       // A normal integer variable
-    int* p = &a;      // Pointer storing the address of a
+    int* batee5 = &a;      // Pointer storing the address of a
 
         // &a gets the memory address of a.
         // p stores that address.
@@ -24,7 +24,7 @@ using namespace std;
         // ex:
 
         void printPointer(){
-            cout<<*p<<endl; // Outputs: 10, which is the value of a
+            cout << *batee5 << endl; // Outputs: 10, which is the value of a
             // This means *p retrieves the value stored at the memory address stored in p.
         }
 
@@ -37,8 +37,8 @@ using namespace std;
 
         // Best practice to initialize unused pointers
         
-        int* nptr = nullptr;
-
+      
+    int* nptr = nullptr;
         // Dangling Pointer: A pointer that points to a memory location that has been freed.
             // Imagine you want to visit at friend at a hotel. You write down his hotel room number on paper to visit him when he is there. 
             // Later, your friend checks out, and a new person moves into his room. 
@@ -47,7 +47,7 @@ using namespace std;
             // That’s a dangling pointer.
 
             void danglingPointer(){
-                int* dPtr = new int(5);
+                int* dPtr = &a;
                 delete dPtr;  // Memory is deallocated, but pointer still exists
                 cout << *dPtr; // Undefined behavior (dangling pointer)
             }
@@ -60,6 +60,7 @@ using namespace std;
         // This ensures that the pointer correctly moves to the next memory location for that type.
 
         // ex:
+        // [first element of array][second element of the array][][][][][]
         void pointerArthimetic(){
             int arr[] = {10, 20, 30};
             int* ptr = arr;  // Pointer to the first element
@@ -90,7 +91,7 @@ using namespace std;
     
     // Pointer Arithmetic Operations
 
-        // Increment (ptr++)
+        // Increment (ptr++) // ptr + 1
             //Moves the pointer forward to the next element in memory.
             //If ptr points to arr[i], after ptr++, it will point to arr[i+1].
             // ex:
@@ -101,7 +102,7 @@ using namespace std;
                 ptr++;  // Moves to arr[1]
             }
 
-        // Decrement (ptr--)
+        // Decrement (ptr--) // ptr - 1
             // Moves the pointer backward.
             // If ptr points to arr[i], after ptr--, it will point to arr[i-1].
             // ex:
@@ -187,7 +188,7 @@ using namespace std;
             // ptr = nullptr ensures ptr doesn't point to freed memory (avoids dangling pointers discuused above).
 
         // Allocating a Dynamic Array (vectors)
-            // If you don’t know the array size at compile-time, use new[] to allocate an array dynamically.
+            // If you don’t know the array size at compile-time, use new to allocate an array dynamically.
             // ex:
             void dynamicArrayAllocation(){
                 int size;

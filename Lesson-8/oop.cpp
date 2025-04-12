@@ -12,7 +12,7 @@ using namespace std;
 
     // Abstraction
         // Hiding implementation details and showing only essential features.
-        // Achieved via abstract classes or interfaces (pure virtual functions).
+        // Achieved via abstract classes (pure virtual functions).
 
     // Inheritance
         // A class (child) can inherit attributes and methods from another class (parent).
