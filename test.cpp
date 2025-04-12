@@ -1,15 +1,17 @@
 #include <iostream>
+#include <vector>
+using namespace std;
 
-// Functions (Lesson 4)
-// Arrays & Strings (Lesson 5)
-// Pointers & References (Lesson 6)
+char str1[] = "Hello";
+char str2[] = "World";
+
+void stringLenght(){
+        cout << strlen(str1) << endl; // Output: 10 (length)
+    } 
 
 int main() {
-    int x = 5;
+    stringLenght();
+
     
-    // Trying to assign a string to an integer variable (type mismatch)
-    // x = "Hello, world!"; // This will cause a compilation error
-    
-    std::cout << x << std::endl; // This line won't be reached due to the error above
     return 0;
 }
