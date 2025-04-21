@@ -23,7 +23,7 @@ private:
 
 public:
     // Constructor initializing the radius
-    Circle(double r) : radius(r) {}
+    Circle(double r) : radius(r) {} // radius(r) is same as radius = r;
 
     // Override the area method using formula: πr²
     double area() override {
@@ -102,7 +102,7 @@ public:
 // Main function
 int main() {
     cout << "=== Runtime Polymorphism with Inheritance ===" << endl;
-    Shape* shape; // Base class pointer to demonstrate runtime polymorphism
+    Shape* shape; // Base class pointer to demonstrate runtime polymorphism / dynamic binding
 
     // Create Circle and Rectangle objects
     Circle c(5);          // Circle with radius 5

@@ -184,6 +184,10 @@ using namespace std;
             std::cout << "Meow\n";  // Cat-specific behavior for sound
         }
     };
+    // derived class: Jamil
+    class Jamil : public Animal3 {
+    public:
+    };
 
     void Example3() {
         // Pointer to the base class (Animal)
@@ -192,21 +196,34 @@ using namespace std;
         // Creating objects of Dog and Cat
         Dog3 d;
         Cat3 c;
+        Jamil j;
+
 
         // Assigning the address of the Dog object to the Animal pointer
+        // this is called dynamic binding.
         a = &d;
 
         // Calling the sound() method via the Animal pointer
         // Even though a is of type Animal*, the actual method that gets called
         // is the one defined in the Dog class due to polymorphism
+        // the pointer dynamically calls the sound function releated to the Dog class
         a->sound();  // Output: Bark
+
+        // on the other hand:
+        // this is called static binding.. specifying that the soun function has to come from the d objects
+        // implementation of the sound function.
+        d.sound();  // This is compile-time binding, since d is a concrete Dog3 object.
 
         // Assigning the address of the Cat object to the Animal pointer
         a = &c;
-
+        
         // Calling the sound() method via the Animal pointer
         // Now the actual method that gets called is the one defined in the Cat class
         a->sound();  // Output: Meow
+
+        a = &j;
+        a->sound(); // Output: Same as parent class => Some animal sound
+
     }
 
     // The sound() function is overridden in the Dog and Cat classes. The appropriate method 
