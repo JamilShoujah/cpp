@@ -1,0 +1,10 @@
+Exercise 3: Abstraction - Employee Management System
+Problem:
+
+Create an abstract class Employee with a pure virtual method calculateSalary().
+
+Create two derived classes: FullTimeEmployee and PartTimeEmployee.
+
+FullTimeEmployee should have a fixed salary, while PartTimeEmployee should be paid by the hour.
+
+Demonstrate polymorphism by calculating salaries for both types of employees.

@@ -1,0 +1,7 @@
+Problem:
+
+Create an abstract class Shape with a pure virtual function area().
+
+Derive classes Rectangle, Triangle, and Circle from Shape, and implement the area() function for each.
+
+Demonstrate polymorphism by calculating the area of different shapes using an array of Shape*.

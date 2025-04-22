@@ -1,0 +1,9 @@
+Exercise 1: Class Inheritance - Creating a Shape Hierarchy
+Problem:
+
+Create a base class Shape that has a function area() and perimeter(). These will be pure virtual functions, making Shape an abstract class.
+
+Create derived classes Rectangle and Circle, and implement the area() and perimeter() functions for each.
+
+Demonstrate polymorphism by creating a Shape pointer array and calculating the area and perimeter of multiple shapes.
+

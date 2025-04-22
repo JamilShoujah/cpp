@@ -1,0 +1,8 @@
+Exercise 2: Encapsulation - Bank Account System
+Problem:
+
+Create a class BankAccount with private members: accountNumber, accountHolder, and balance.
+
+Provide public methods to deposit, withdraw, and check the balance.
+
+Make sure that the balance cannot be negative and only allow withdrawals if the account has sufficient funds.
