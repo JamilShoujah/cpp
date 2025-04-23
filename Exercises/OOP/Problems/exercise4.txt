@@ -1,7 +1,30 @@
-Problem:
+You are building a geometry system for a drawing application. Implement the following classes:
 
-Create an abstract class Shape with a pure virtual function area().
+Base Class: Shape
+Has a name attribute.
 
-Derive classes Rectangle, Triangle, and Circle from Shape, and implement the area() function for each.
+A constructor to set the name.
 
-Demonstrate polymorphism by calculating the area of different shapes using an array of Shape*.
+A virtual method area() that returns 0.
+
+A virtual method display() that prints the shape name.
+
+Derived Class: Rectangle
+Has width and height.
+
+Overload the area() method to return the area.
+
+Overload the display() method to show dimensions.
+
+Overload the + operator to add two rectangles (sum of width and height).
+
+Overload a method named scale():
+
+scale(int factor)
+
+scale(double factor)
+
+Derived Class: Circle
+Has radius.
+
+Override area() and display() as in Rectangle.
