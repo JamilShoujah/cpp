@@ -23,7 +23,7 @@ void example() {
 void exampleTwo(){
     string a = "Hello ", b = "world!", c ;
     
-    c =  a + b;
+    c =  a + b; // "Hello world!"
 }
 
 // in this example, the plus operator behaves differntly when dealing with two strings.
@@ -43,7 +43,7 @@ struct Car {
     // Overload the '+' operator to combine two Car objects
     // The object on the left-hand side of the + is implicitly passed as this.
     // The object on the right-hand side is explicitly passed as the parameter other.
-    Car operator+(const Car& other) { // returning an object to type car
+    Car operator +(const Car& other) { // returning an object to type car
         // object of type car will contain a brand and horespower member variables
 
         // We create a new Car object called result that will store the outcome of adding the two cars.
@@ -66,10 +66,9 @@ struct Car {
     }
 
     // Overload the '==' operator to compare two Car objects
-    bool operator==(const Car& a) {
+    bool operator == (const Car& a) {
         return brand == a.brand && horsepower == a.horsepower;
     }
-
 
     void display() {
         cout << "Brand: " << brand << ", Horsepower: " << horsepower << endl;
@@ -86,8 +85,10 @@ void exampleThree() {
 
     Car combinedCar = car1 + car2; // Using overloaded + operator
     // combinedCar.brand = "BMW & Mercedes";
+    // combinedCar.horsePower = 650
 
     combinedCar.display();
+    //  "Brand: BMW & Mercedes, Horsepower: 650";
 }
 
 // Why const Car& other?
@@ -129,6 +130,7 @@ void exampleThree() {
             Car car1  = {"NISSAN", 300};
             // The friend function allows us to output the brand and horsepower directly using cout like this:
             cout << car1;
+            // "Brand: NISSAN, Horsepower: 300";
         }
 
 
@@ -145,7 +147,6 @@ void exampleThree() {
         // void
         // T: The object type itself (Car).
         // T& or const T&: For operators that return a reference to the object.
-        // bool
         // ostream&: For output streaming (<< operator).
         // T* or const T*: For operators like -> (usually in smart pointers).
         // Other Primitive Types
