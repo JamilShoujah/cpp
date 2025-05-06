@@ -29,11 +29,11 @@
         // Overhead > speedup.
         // Heavy synchronization needed
         // If operations depend on shared data, you risk:
-        // Race conditions
-        // Deadlocks
-        // Increased complexity
-        // Order matters
-        // par and par_unseq may not preserve order — especially risky with side effects.
+            // Race conditions
+            // Deadlocks
+            // Increased complexity
+            // Order matters
+            // par and par_unseq may not preserve order — especially risky with side effects.
         // Debugging becomes harder
         // Threads can make bugs nondeterministic and tricky to trace.
 
@@ -76,3 +76,5 @@ int main() {
 
     return 0;
 }
+
+    

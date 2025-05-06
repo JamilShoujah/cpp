@@ -19,14 +19,16 @@ T add(T a, T b) {
     return a + b;
 }
 
+// to use two different data types
 template <typename T, typename M>
 void printData(T a, M b) {
     cout << "First: " << a << ", Second: " << b << endl;
 }
 
 template <typename J, typename R>
-R specialAdd(J val1, R val2){
+R specialAdd(J val1, R val2){ // return type is R
     return val1 + val2; // This works as long as J + R is a valid expression
+    // by valid i mean that the + operator works on the two types J and R
 }
 
 // ==============================
@@ -41,7 +43,7 @@ string add<string>(string a, string b) {
 
 void functionTemplateExample() {
     int x = 5, y = 10;
-    double dx = 3.5, dy = 4.5;
+    double dx = 3.0, dy = 4.5;
     string sx = "Hello", sy = "World";
 
     cout << "Sum of integers: " << add(x, y) << endl;       // Uses general template
@@ -59,7 +61,6 @@ template <typename T>
 class Box {
 private:
     T value;
-
 public:
     Box(T val) : value(val) {}
     T getValue() { return value; }
@@ -110,6 +111,6 @@ int main() {
 
 // Summary of Specialization:                      
 // Function:  
-    // template<typename T> T add(T a, T b) => specialization => template<> string add<string>(string a, b)
+    // template<typename T> T add(T a, T b) => specialization => template<> returnType add<returnType>(returnType a, returnType b)
 // Class:
-    // template<typename T> class Box => specialization => template<> class Box<string>     
+    // template<typename T> class Box => specialization => template<> class Box<returnType>     

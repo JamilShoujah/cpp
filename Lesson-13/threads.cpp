@@ -17,7 +17,7 @@ using namespace std;
 
             // => They're juggling tasks, not finishing them all at once — that's concurrency.
 
-    //  Parallelism
+    // Parallelism
         // Definition: Performing multiple tasks at the exact same time.
         // How: Tasks are run on multiple cores or processors simultaneously.
             // ex:  imagine three tailors, each with their own sewing machine, working on different 
@@ -27,8 +27,6 @@ using namespace std;
 
 // Why Parallelism & Concurrency?
     // Improve performance 
-    // Critical for modern apps 
-    // Enables responsive UIs and real-time systems
     // Allows for effcient use of system resources
 
 
@@ -81,10 +79,11 @@ using namespace std;
         cout << "Hello from worker thread!\n";
     }
 
-    void ExampleOne() {
+    void ExampleOne() { // assume this is main
+
         // Creates a new thread of execution that runs the printMessage() function
         thread t(printMessage);
-
+        // printMessage();
         // Blocks the current (main) thread until t finishes execution.
         // This ensures that the main thread waits for the worker thread to complete
         t.join();
@@ -133,6 +132,8 @@ using namespace std;
         // ex:
 
         #include <chrono> // just to make the thread sleep to simulate working for a long time
+#include <condition_variable>
+#include <atomic>
 
         void backgroundTask() {
             this_thread::sleep_for(std::chrono::seconds(2));
@@ -205,7 +206,7 @@ using namespace std;
             mutex mtx2;
 
             void safeCriticalSection() {
-                std::lock_guard<std::mutex> lock(mtx2);
+                lock_guard<mutex> lock(mtx2);
                 // Safe access to shared data
                 // lock is automatically released when function ends or an exception is thrown
             }
@@ -285,11 +286,13 @@ using namespace std;
     // Deadlocks:
         // A deadlock occurs when two or more threads are each waiting on a resource held by the other, and none can proceed.
 
-        // IRL Example: Two Friends, Two Forks
+        // IRL Example: Two Friends, Two chopsticks
             // Two friends, Alice and Bob, are about to eat dinner.
-            // There are two forks on the table. 
+            // There are two chopsticks on the table. 
 
-            //To eat, each person needs both forks. 
+            // ======================================
+            // To eat, each person needs both chopsticks. 
+            // ======================================
 
             // Alice picks up one fork first and Bob picks up the other fork first.
             // Then both wait for the other fork to be free.
@@ -636,7 +639,7 @@ using namespace std;
     // Keep shared state to a minimum. Favor message-passing (e.g., queues) over shared memory when possible.
     // Use thread-safe data structures like std::queue with mutex or concurrent_queue (if available).
     // Prefer higher-level concurrency abstractions like:
-    // std::async (for simple futures),
-    // Thread pools,
-    // std::promise/std::future for communication.
-    // Test with thread sanitizers (-fsanitize=thread in GCC/Clang) to detect data races.
+        // std::async (for simple futures),
+        // Thread pools,
+        // std::promise/std::future for communication.
+        // Test with thread sanitizers (-fsanitize=thread in GCC/Clang) to detect data races.
