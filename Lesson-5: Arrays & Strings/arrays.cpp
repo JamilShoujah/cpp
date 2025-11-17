@@ -1,6 +1,5 @@
 // Lesson 5 - Part 1: Arrays
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
@@ -243,8 +242,8 @@ using namespace std;
     // A vector in C++ is part of the Standard Template Library (STL) and provides a dynamic array that can grow and shrink in size.
     // Unlike normal arrays, vectors handle memory management automatically.
 
-    // To use vectors, include the <vector> header (Line 3)
- 
+    // To use vectors, include the <vector> header 
+    #include <vector>
     // Declaring and Initializing Vectors
     vector<int> vec; // Declares an empty vector of integers
     // since its dynamic, no need to specify it's size
@@ -383,3 +382,189 @@ using namespace std;
     // Bounds Checking		
         // Vector:.at() provides safety
         // arrays:  No bounds checking
+
+
+// Dynamic Arrays (Using new and delete)
+    // In C++, when you want an array whose size is not known at compile time, you can create a dynamic array.
+    // Dynamic arrays are allocated on the heap, not the stack, and their size is determined at runtime.
+
+        // what is a heap? 
+            // In C++, the heap is a region of memory used for dynamic memory allocation — meaning memory 
+            // that you manually request at runtime (while the program is running), not during compilation.
+
+    // Unlike vectors, dynamic arrays require manual memory management. 
+    // if youre lazy like me, use vectors whenever you need dyanmic arrays.. vectors do all the heavy lifting for you
+
+    // Declaring a Dynamic Array
+        void declaringDA(){
+            // focus on this section
+            // ------------------------------
+            int size = 5;
+            int* arr = new int[size]; // Creates a dynamic array of 5 integers
+            // The memory is created during runtime.
+            // All elements are uninitialized (contain garbage values).
+            // ------------------------------
+        }
+            
+    // Initializing a Dynamic Array
+        void initilizingDA(){
+        // focus on this section
+        // ------------------------------
+            int size = 5;
+            int* arr = new int[size];
+
+            for (int i = 0; i < size; i++) {
+                arr[i] = i + 1;
+            }
+        // ------------------------------
+        }
+        
+    // Accessing Dynamic Array Elements
+        // Same as normal arrays, using indexing:
+        void indexingExample(){
+        // focus on this section
+        // ------------------------------
+                cout << arr[0]; // First element
+                cout << arr[2]; // Third element
+                // NOTE: No bounds checking — accessing outside the range is undefined behavior.
+        // ------------------------------
+        }
+
+
+          // Modifying Elements
+        // similar to normal static arrays:
+        void example(){
+        // focus on this section
+        // ------------------------------
+            int size = 5;
+            int* arr = new int[size];
+
+            arr[2] = 10; // Update third element
+        // ------------------------------
+        }
+
+    // Deleting a Dynamic Array
+        // IMPORTANT: You must free the allocated memory using delete[]:
+        // we can pass over pointer for more details on this
+        // If you forget this → memory leak.
+    
+        void example(){
+        // focus on this section
+        // ------------------------------
+            int size = 5;
+            int* arr = new int[size];
+
+            delete[] arr;
+        // ------------------------------
+        }
+
+    // Getting Size
+        // You cannot use sizeof(arr) like with static arrays.
+        // arr (here) is just a pointer.
+        // You must track the size manually: (Keep it updated if you resize)
+
+         int* arr = new int[5];   // new int[5] allocates memory on the heap, but the variable arr only stores The address of the first element
+                                        // NOT the number of elements, NOT the total memory size, NOT any metadata
+                                        // so using sizeof(arr) returns the size of the pointer itself!
+
+
+        // If you forget to update size, the program will break.
+        // but how to resize?
+
+    // Resizing Dynamic Arrays
+        // You cannot resize a dynamic array directly.
+        // To “resize”, you must:
+            // 1 - Allocate a new array
+            // 2 - Copy old values
+            // 3 - Delete old array
+    
+        // check out the example below
+
+        void reSize(){
+        // focus on this section
+        // ------------------------------
+            int size = 5;
+            int* arr = new int[size];
+
+            // Resize to 10
+            int newSize = 10;
+            int* newArr = new int[newSize];
+
+            // Copy old items
+            for (int i = 0; i < size; i++) {
+                newArr[i] = arr[i];
+            }
+
+            delete[] arr;   // delete old memory
+
+            arr = newArr;   // point to new array
+            size = newSize; // update size!
+        // ------------------------------
+        }
+
+// Dynamic Arrays vs Vectors (Summary)
+// | Feature      | Dynamic Array (`new[]`)       | `std::vector`                  |
+// | ------------ | ----------------------------- | ------------------------------ |
+// | Size         | Runtime fixed                 | Grows/shrinks automatically    |
+// | Memory       | Manual (`new[]` / `delete[]`) | Automatic (RAII)               |
+// | Safety       | Low                           | High (`.at()` bounds checking) |
+// | Resizing     | Manual copying                | Built-in                       |
+// | Ease of use  | Harder                        | Easier                         |
+// | Recommended? | Not in modern C++             | Yes                            |
+
+
+// important: ask if instructor wants the implementation of DA or just understanding how it functions
+
+// Dynamic Array implementation:
+
+#include <cstring> // for memcpy
+
+class DA {
+    public:
+        int c;   // capacity
+        int n;   // number of used elements
+        int* a;  // pointer to allocated memory
+
+        // Constructor: start with capacity = 16 (default)
+        DA(int initialCapacity = 16)
+            : c(initialCapacity), n(0), a(new int[c]) {}
+
+        // Insert element at the end
+        bool insert(int e) {
+            // If no space, grow the array
+            if (n >= c) {
+                if (!grow())
+                    return false; // memory allocation failed
+            }
+
+            a[n] = e;
+            n++;
+            return true;
+        }
+
+    private:
+        // Double the capacity
+        bool grow() {
+            int newCapacity = c * 2;
+
+            // allocate new memory
+            int* b = new(std::nothrow) int[newCapacity];
+
+            if (b == nullptr)
+                return false; // allocation failure
+
+            // copy old data into new array
+            memcpy(b, a, c * sizeof(int));
+
+            // free old memory
+            delete[] a;
+
+            // update pointer and capacity
+            a = b;
+            c = newCapacity;
+
+            return true;
+        }
+};
+
+
