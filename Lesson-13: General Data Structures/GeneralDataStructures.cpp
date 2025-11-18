@@ -1,4 +1,4 @@
-// Lesson 10: Introduction to Data Structures
+// Lesson 13: Introduction to Data Structures
 
 // This lesson provides a high-level overview of data structures.
 // Here, we introduce what data structures are, why we need them,
