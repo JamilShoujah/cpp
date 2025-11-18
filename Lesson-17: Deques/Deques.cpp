@@ -29,6 +29,7 @@
     // similar to queues, deques can be implemented by either doubly linked lists or Dynamic Array / Circular Buffer
 
     // doubly linked list implementation
-
+        // Lesson-17: Deques/examples/doublyLinkedListsDeque.cpp
 
     // Dynamic Array / Circular Buffer implementation
+        // Lesson-17: Deques/examples/circularBufferDeque.cpp
