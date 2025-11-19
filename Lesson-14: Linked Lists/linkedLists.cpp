@@ -222,7 +222,7 @@ public:
 
     // NULL <- [node] <-> [node] <-> [node] -> NULL
 
-    class DNode {
+class DNode {
 public:
     int data;        // Value stored in this node
     DNode* next;     // Pointer to next node
