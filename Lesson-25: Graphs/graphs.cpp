@@ -254,8 +254,32 @@ using namespace std;
         }
 
     // Shortest Path Algorithms
+
+        // BFS with distances (shortest path in unweighted graphs)
+        void bfsWithDistance(int start, vector<vector<int>>& adj) {
+            vector<bool> visited(adj.size(), false);
+            vector<int> distance(adj.size(), -1); // store distance from start
+            queue<int> q;
+
+            visited[start] = true;
+            distance[start] = 0;
+            q.push(start);
+
+            while (!q.empty()) {
+                int node = q.front(); q.pop();
+                cout << "Node " << node << ", distance: " << distance[node] << endl;
+
+                for (int neighbor : adj[node]) {
+                    if (!visited[neighbor]) {
+                        visited[neighbor] = true;
+                        distance[neighbor] = distance[node] + 1;
+                        q.push(neighbor);
+                    }
+                }
+            }
+        }
+        
         // Dijkstra (no negative weights)
-        // Finds shortest path from single source.
         void dijkstra(int start, vector<vector<pair<int,int>>>& adj) {
             vector<int> dist(adj.size(), INT_MAX);
             priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
@@ -282,7 +306,37 @@ using namespace std;
                 cout << "dist to " << i << " = " << dist[i] << "\n";
         }
 
+
+        // Bellman-Ford Algorithm (handles negative weights)
+        bool bellmanFord(int start, int n, vector<tuple<int,int,int>>& edges) {
+            vector<int> dist(n, INT_MAX);
+            dist[start] = 0;
+
+            // Relax all edges n-1 times
+            for (int i = 0; i < n-1; i++) {
+                for (auto [u, v, w] : edges) {
+                    if (dist[u] != INT_MAX && dist[u] + w < dist[v]) {
+                        dist[v] = dist[u] + w;
+                    }
+                }
+            }
+
+            // Detect negative weight cycles
+            for (auto [u, v, w] : edges) {
+                if (dist[u] != INT_MAX && dist[u] + w < dist[v]) {
+                    cout << "Graph contains a negative weight cycle!" << endl;
+                    return false;
+                }
+            }
+
+            cout << "Bellman-Ford distances from node " << start << ":\n";
+            for (int i = 0; i < n; i++) cout << "Node " << i << ": " << dist[i] << endl;
+
+            return true;
+        }
+
     // Detecting Cycles
+
         // Undirected Graph Cycle Detection (DFS)
         bool dfsCycle(int node, int parent, vector<vector<int>>& adj, vector<bool>& visited) {
             visited[node] = true;
@@ -297,6 +351,21 @@ using namespace std;
             }
             return false;
         }
+
+        // Cycle detection in directed graphs
+        bool dfsCycleDirected(int node, vector<vector<int>>& adj, vector<bool>& visited, vector<bool>& recStack) {
+            visited[node] = true;
+            recStack[node] = true;
+
+            for (int neighbor : adj[node]) {
+                if (!visited[neighbor] && dfsCycleDirected(neighbor, adj, visited, recStack)) return true;
+                else if (recStack[neighbor]) return true; // back edge found
+            }
+
+            recStack[node] = false;
+            return false;
+        }
+
 
     // Topological Sort
         // (Only for DAGs – Directed Acyclic Graphs) => No cycles
@@ -329,14 +398,27 @@ using namespace std;
     }
 
     // When to Use What
-        // Find shortest path (unweighted)	=> BFS
-        // Shortest path with weights	    => Dijkstra
-        // Detect cycle (undirected)	    => DFS
-        // Detect cycle (directed)	        => DFS + recursion stack
-        // Topological ordering	            => Topological sort
-        // Check connectivity               => BFS / DFS
-        // Count connected components	    => BFS / DFS
-        // Represent large sparse graph	    => Adjacency list
-        // Fast edge lookup	                => Adjacency matrix
+        // - Shortest path (unweighted)             → BFS (use bfsWithDistance)
+        // - Shortest path (weighted ≥0)            → Dijkstra
+        // - Shortest path (negative weights)       → Bellman-Ford
+        // - All-pairs shortest paths               → Floyd-Warshall
+        // - Detect cycle (undirected)              → DFS
+        // - Detect cycle (directed)                → DFS + recursion stack (dfsCycleDirected)
+        // - Topological ordering                   → Topological sort
+        // - Check connectivity                     → BFS / DFS
+        // - Count connected components             → BFS / DFS
+        // - Represent large sparse graph           → Adjacency list
+        // - Fast edge lookup                       → Adjacency matrix
 
+
+
+// Next lesson (Optional)
+    // Minimum Spanning Tree hint
+        // - Prim's algorithm: start from node, pick smallest edge connecting visited to unvisited
+        // - Kruskal's algorithm: sort edges by weight, union-find to avoid cycles
+
+    // Floyd-Warshall hint 
+        // - Computes all-pairs shortest paths
+        // - Useful for dense graphs
+        // - Dynamic programming approach
 
